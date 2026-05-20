@@ -3,8 +3,17 @@
  * Source: Case Study Document, pages 17-18
  * Converted to structured JavaScript array with AI assistance
  */
+export interface Employee {
+  firstName: string;
+  lastName: string;
+}
 
-export const departments = [
+interface Department {
+  name: string;
+  employees: Employee[];
+}
+
+export const departments : Department[] = [
   {
     name: "Administration",
     employees: [
