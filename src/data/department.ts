@@ -1,4 +1,4 @@
-import type { Department }
+import type { Department } from "../types/department";
 
 const departmentData: Department[] = [
     {

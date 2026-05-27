@@ -1,7 +1,7 @@
-import { departments } from "./employee_data";
+import departmentData from "../data/department";
 
 export function EmployeeList() {
-    const departmentName = departments.map(department =>
+    const departmentName = departmentData.map(department =>
         <p key={department.name}>
             <h2>{department.name}</h2>
 
