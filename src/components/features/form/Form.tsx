@@ -4,7 +4,8 @@ import type { Department } from '../../../types/department';
 export function Form({
   departments,
   updateDepartments
-}: {
+}: 
+{
   departments: Department[],
   updateDepartments: React.Dispatch<React.SetStateAction<Department[]>>
 }) {
@@ -36,7 +37,6 @@ export function Form({
         <input
           value={firstName}
           onChange={e => setFirstName(e.target.value)}
-          required
         />
       </label>
       <br />
@@ -46,7 +46,6 @@ export function Form({
         <input
           value={lastName}
           onChange={e => setLastName(e.target.value)}
-          required
         />
       </label>
       <br />
