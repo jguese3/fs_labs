@@ -5,9 +5,9 @@ export function validateInput(inputValue: string): {
     let isValid = true;
     const errors: string[] = [];
 
-    if(inputValue.trim().length < 1) {
+    if(inputValue.trim().length < 3) {
         isValid = false
-        errors.push("Name must be more than one character")
+        errors.push("Name must be more than three characters")
     }
 
     return {isValid, errors}
