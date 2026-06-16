@@ -1,18 +1,27 @@
 import { useState } from "react";
-import * as inputService from "../services/formInputService"
 
 export function useFormInput() {
-    const  [inputValue, setInputValue] = useState<string>("");
+    const [inputValue, setInputValue] = useState("");
+    const [messages, setMessages] = useState<string[]>([]);
 
-    function tryInput(): {isValid: boolean, errors: string[]} {
-        const validation = inputService.validateInput(inputValue);
+    function validate(
+        validator: (value: string) => {
+            isValid: boolean;
+            errors: string[];
+        }
+    ): boolean {
 
-        return validation;
-    };
+        const result = validator(inputValue);
+
+        setMessages(result.errors);
+
+        return result.isValid;
+    }
 
     return {
         inputValue,
         setInputValue,
-        tryInput
-    }
+        messages,
+        validate
+    };
 }
