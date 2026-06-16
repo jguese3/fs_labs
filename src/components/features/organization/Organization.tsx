@@ -24,7 +24,6 @@ export function Organization() {
             );
 
         firstName.setMessages(result.firstNameErrors ?? []);
-        role.setMessages(result.roleErrors ?? []);
 
         if (!result.success) return;
 
