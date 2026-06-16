@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "../Features.module.css";
 
 import { useFormInput } from "../../../hooks/useFormInput";
-import { employeeRepo } from "../../../repository/employeeRepo";
+import * as employeeRepo from "../../../repository/employeeRepo"
 import { employeeService } from "../../../services/employeeService";
 
 export function Employees() {

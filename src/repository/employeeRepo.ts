@@ -1,12 +1,12 @@
+import type { Department } from "../types/department";
 import { departmentData } from "../data/departments";
 import { Guid } from "guid-typescript";
 
-export const employeeRepo = {
-    getDepartments() {
-        return departmentData;
-    },
+export function getDepartments(): Department[] {
+    return departmentData;
+}
 
-    createEmployee(
+export async function createEmployee(
         firstName: string,
         lastName: string,
         departmentName: string
@@ -28,5 +28,4 @@ export const employeeRepo = {
         department.employees.push(employee);
 
         return employee;
-    }
-};
+}
