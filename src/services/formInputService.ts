@@ -1,44 +1,39 @@
-export function handleEmployeeSubmit = () => {
-    let isValid = true;
-    setFormMessages([]);
+export interface ValidationResult {
+    isValid: boolean;
+    errors: string[];
+}
 
-    if(firstNameValue.trim().length < 3) {
-        isValid = false;
-        setFormMessages(s => {
-            return [...s, "First names must have at least three characters."]
-        });
+export function validateFirstName(
+    value: string
+): ValidationResult {
+    const errors: string[] = [];
+
+    if (value.trim().length < 3) {
+        errors.push(
+            "First names must have at least three characters."
+        );
     }
 
-    if(!departmentData.find(d => d.name === departmentInput)) {
-        isValid = false;
+    return {
+        isValid: errors.length === 0,
+        errors
+    };
+}
 
-        setFormMessages(s => {
-            return [...s, "Employee must be in an existing department."]
-        })
+export function validateDepartment(
+    value: string,
+    departmentNames: string[]
+): ValidationResult {
+    const errors: string[] = [];
+
+    if (!departmentNames.includes(value)) {
+        errors.push(
+            "Employee must be in an existing department."
+        );
     }
 
-    if(isValid) {
-        setFirstNameValue("");
-        setLastNameValue("");
-
-        setDepartmentList(oldState => oldState.map(d => {
-            if(d.name !== departmentInput) {
-                return d;
-            } else {
-                // must create a deep clone of the department object being updated
-                return {
-                    id: d.id,
-                    name: d.name,
-                    employees: [...d.employees,
-                        {
-                            id: Guid.create().toString(),
-                            firstName: firstNameValue,
-                            lastName: lastNameValue
-                        }
-
-                    ]
-                };
-            }
-        }));
-    }
+    return {
+        isValid: errors.length === 0,
+        errors
+    };
 }
