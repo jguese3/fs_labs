@@ -1,12 +1,11 @@
+import type { Role } from "../types/role";
 import { roleData } from "../data/roles";
 
-export const organizationRepo = {
+export function getRoles(): Role[] {
+    return roleData;
+}
 
-    getRoles() {
-        return roleData;
-    },
-
-    assignEmployeeToRole(
+export async function assignEmployeeToRole(
         roleTitle: string,
         firstName: string,
         lastName: string
@@ -26,5 +25,4 @@ export const organizationRepo = {
         };
 
         return role;
-    }
-};
+}

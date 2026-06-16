@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "../Features.module.css";
 
 import { useFormInput } from "../../../hooks/useFormInput";
-import { organizationRepo } from "../../../repository/organizationRepo";
+import * as organizationRepo from "../../../repository/organizationRepo";
 import { organizationService } from "../../../services/organizationService";
 
 export function Organization() {
