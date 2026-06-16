@@ -22,6 +22,7 @@ export function useFormInput() {
         inputValue,
         setInputValue,
         messages,
+        setMessages,
         validate
     };
 }

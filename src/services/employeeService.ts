@@ -6,10 +6,11 @@ export const employeeService = {
         lastName: string,
         departmentName: string
     ) {
-        const errors: string[] = [];
+        const firstNameErrors: string[] = [];
+        const departmentErrors: string[] = [];
 
         if (firstName.trim().length < 3) {
-            errors.push(
+            firstNameErrors.push(
                 "First names must have at least three characters."
             );
         }
@@ -20,15 +21,19 @@ export const employeeService = {
                 .some(d => d.name === departmentName);
 
         if (!departmentExists) {
-            errors.push(
+            departmentErrors.push(
                 "Employee must be in an existing department."
             );
         }
 
-        if (errors.length > 0) {
+        if (
+            firstNameErrors.length > 0 ||
+            departmentErrors.length > 0
+        ) {
             return {
                 success: false,
-                errors
+                firstNameErrors,
+                departmentErrors
             };
         }
 
@@ -41,7 +46,8 @@ export const employeeService = {
         return {
             success: true,
             employee,
-            errors: []
+            firstNameErrors: [],
+            departmentErrors: []
         };
     }
 };
